@@ -5,15 +5,17 @@ import BookShelf from './BookShelf'
 class ListBooks extends Component {
 
   render() {
+    const {books, onShelfChange} = this.props;
+
     return(
       <div className="list-books">
         <div className="list-books-title">
           <h1>MyReads</h1>
         </div>
         <div className="list-books-content">
-          <BookShelf content={this.props.books.filter((book) => (book.shelf === "currentlyReading"))}/>
-          <BookShelf content={this.props.books.filter((book) => (book.shelf === "wantToRead"))}/>
-          <BookShelf content={this.props.books.filter((book) => (book.shelf === "read"))}/>
+          <BookShelf content={books.filter((book) => (book.shelf === "currentlyReading"))} onShelfChange={onShelfChange}/>
+          <BookShelf content={books.filter((book) => (book.shelf === "wantToRead"))} onShelfChange={onShelfChange}/>
+          <BookShelf content={books.filter((book) => (book.shelf === "read"))} onShelfChange={onShelfChange}/>
         </div>
         <div className="open-search">
           <Link to='/search'>Add a book</Link>

@@ -3,7 +3,7 @@ import Book from './Book'
 
 class BookShelf extends Component {
   render() {
-    const content = this.props.content;
+    const {content, onShelfChange} = this.props;
     let shelfTitle='';
     if(content[0]){
       {content[0].shelf === 'currentlyReading' && (shelfTitle='Currently Reading')
@@ -17,7 +17,7 @@ class BookShelf extends Component {
           <ol className="books-grid">
             {content[0] && (content.map(book => (
             <li key={book.id}>
-              <Book book={book}/>
+              <Book book={book} onShelfChange={onShelfChange}/>
             </li>
           )))}
           </ol>
